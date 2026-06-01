@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Daily Activity Journal</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero">
+        <p class="eyebrow">V0 Daily Journal</p>
+        <h1>Daily Activity Journal</h1>
+        <p class="lede">
+          Keep a rough log of what you did today. The page is intentionally clumsy and plain.
+        </p>
+      </section>
+
+      <section class="layout">
+        <form id="entry-form" class="entry-panel">
+          <label>
+            Date
+            <input id="entry-date" type="date" />
+          </label>
+          <label>
+            Mood
+            <select id="entry-mood">
+              <option>tired</option>
+              <option>okay</option>
+              <option>focused</option>
+              <option>busy</option>
+              <option>grumpy</option>
+            </select>
+          </label>
+          <label>
+            Activities
+            <textarea id="entry-notes" rows="7" placeholder="Write what happened today..."></textarea>
+          </label>
+          <button type="submit">Save entry</button>
+          <button id="clear-form" type="button" class="secondary">Clear form</button>
+        </form>
+
+        <aside class="stats-panel">
+          <div class="stat-box">
+            <span>Total entries</span>
+            <strong id="entry-count">0</strong>
+          </div>
+          <div class="stat-box">
+            <span>Words today</span>
+            <strong id="word-count">0</strong>
+          </div>
+          <div class="stat-box">
+            <span>Last saved mood</span>
+            <strong id="last-mood">none</strong>
+          </div>
+          <div class="stat-box">
+            <span>Most recent date</span>
+            <strong id="last-date">-</strong>
+          </div>
+        </aside>
+      </section>
+
+      <section class="journal-panel">
+        <div class="journal-header">
+          <h2>Saved Entries</h2>
+          <button id="seed-sample" type="button" class="secondary">Load sample</button>
+        </div>
+        <div id="entries" class="entries"></div>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

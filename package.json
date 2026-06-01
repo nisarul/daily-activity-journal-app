@@ -1,0 +1,9 @@
+{
+  "name": "daily-activity-journal-app",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A deliberately rough daily activity journal website for the V0 demo baseline.",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
