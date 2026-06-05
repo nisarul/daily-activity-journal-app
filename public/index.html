@@ -17,10 +17,11 @@
       </section>
 
       <section class="layout">
-        <form id="entry-form" class="entry-panel">
+        <form id="entry-form" class="entry-panel" novalidate>
           <label>
-            Date
-            <input id="entry-date" type="date" />
+            Date <span class="req" aria-hidden="true">*</span>
+            <input id="entry-date" type="date" aria-required="true" aria-describedby="date-error" />
+            <small class="field-error" id="date-error" role="alert"></small>
           </label>
           <label>
             Mood
@@ -33,9 +34,11 @@
             </select>
           </label>
           <label>
-            Activities
-            <textarea id="entry-notes" rows="7" placeholder="Write what happened today..."></textarea>
+            Activities <span class="req" aria-hidden="true">*</span>
+            <textarea id="entry-notes" rows="7" placeholder="Write what happened today..." aria-required="true" aria-describedby="notes-error"></textarea>
+            <small class="field-error" id="notes-error" role="alert"></small>
           </label>
+          <p class="form-note">Fields marked <span class="req" aria-hidden="true">*</span> are required.</p>
           <button type="submit">Save entry</button>
           <button id="clear-form" type="button" class="secondary">Clear form</button>
         </form>

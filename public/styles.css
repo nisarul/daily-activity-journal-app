@@ -94,6 +94,39 @@ button.secondary {
   background: #bfdbfe;
 }
 
+.req {
+  color: #b91c1c;
+}
+
+.form-note {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: #6b7280;
+}
+
+.field-error {
+  color: #b91c1c;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.field-error:empty {
+  display: none;
+}
+
+input.invalid,
+textarea.invalid {
+  border-color: #b91c1c;
+  background: #fef2f2;
+}
+
+input.invalid:focus,
+textarea.invalid:focus {
+  outline: 2px solid #b91c1c;
+  outline-offset: 1px;
+}
+
 .stats-panel {
   display: grid;
   gap: 12px;

@@ -9,6 +9,8 @@ const entryCount = document.getElementById("entry-count");
 const wordCount = document.getElementById("word-count");
 const lastMood = document.getElementById("last-mood");
 const lastDate = document.getElementById("last-date");
+const dateError = document.getElementById("date-error");
+const notesError = document.getElementById("notes-error");
 
 const storageKey = "daily-activity-journal-entries";
 
@@ -75,33 +77,76 @@ function render() {
     .join("");
 }
 
+function todayISO() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function setFieldError(field, errorEl, message) {
+  errorEl.textContent = message;
+  field.classList.add("invalid");
+  field.setAttribute("aria-invalid", "true");
+}
+
+function clearFieldError(field, errorEl) {
+  errorEl.textContent = "";
+  field.classList.remove("invalid");
+  field.removeAttribute("aria-invalid");
+}
+
+function validateForm() {
+  let valid = true;
+
+  const dateValue = entryDate.value;
+  if (!dateValue) {
+    setFieldError(entryDate, dateError, "Please choose a date.");
+    valid = false;
+  } else if (dateValue > todayISO()) {
+    setFieldError(entryDate, dateError, "The date can’t be in the future.");
+    valid = false;
+  } else {
+    clearFieldError(entryDate, dateError);
+  }
+
+  if (!entryNotes.value.trim()) {
+    setFieldError(entryNotes, notesError, "Please write a few words about your day.");
+    valid = false;
+  } else {
+    clearFieldError(entryNotes, notesError);
+  }
+
+  return valid;
+}
+
 entryForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const notes = entryNotes.value.trim();
-  if (!notes) {
-    entryNotes.focus();
+  if (!validateForm()) {
+    entryForm.querySelector(".invalid")?.focus();
     return;
   }
 
   const entries = loadEntries();
   entries.unshift({
     id: crypto.randomUUID(),
-    date: entryDate.value || new Date().toISOString().slice(0, 10),
+    date: entryDate.value,
     mood: entryMood.value,
-    notes
+    notes: entryNotes.value.trim()
   });
 
   saveEntries(entries);
   entryNotes.value = "";
   entryMood.value = "okay";
+  clearFieldError(entryNotes, notesError);
+  clearFieldError(entryDate, dateError);
   render();
 });
 
 clearFormButton.addEventListener("click", () => {
-  entryDate.value = "";
+  entryDate.value = todayISO();
   entryMood.value = "okay";
   entryNotes.value = "";
+  clearFieldError(entryDate, dateError);
+  clearFieldError(entryNotes, notesError);
   render();
 });
 
@@ -110,7 +155,14 @@ seedSampleButton.addEventListener("click", () => {
   render();
 });
 
-entryNotes.addEventListener("input", render);
-entryDate.value = new Date().toISOString().slice(0, 10);
+entryNotes.addEventListener("input", () => {
+  clearFieldError(entryNotes, notesError);
+  render();
+});
+
+entryDate.addEventListener("input", () => clearFieldError(entryDate, dateError));
+
+entryDate.max = todayISO();
+entryDate.value = todayISO();
 entryMood.value = "okay";
 render();
