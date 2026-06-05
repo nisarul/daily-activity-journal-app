@@ -2,6 +2,7 @@ const entryForm = document.getElementById("entry-form");
 const entryDate = document.getElementById("entry-date");
 const entryMood = document.getElementById("entry-mood");
 const entryNotes = document.getElementById("entry-notes");
+const entryNotesError = document.getElementById("entry-notes-error");
 const clearFormButton = document.getElementById("clear-form");
 const seedSampleButton = document.getElementById("seed-sample");
 const entriesContainer = document.getElementById("entries");
@@ -28,6 +29,29 @@ function saveEntries(entries) {
 function countWords(text) {
   const normalized = text.replace(/\s+/g, " ").trim();
   return normalized ? normalized.split(" ").length : 0;
+}
+
+function setFieldError(field, errorEl, message) {
+  errorEl.textContent = message;
+  field.setAttribute("aria-invalid", "true");
+}
+
+function clearFieldError(field, errorEl) {
+  errorEl.textContent = "";
+  field.removeAttribute("aria-invalid");
+}
+
+function validateForm() {
+  let firstInvalid = null;
+
+  if (!entryNotes.value.trim()) {
+    setFieldError(entryNotes, entryNotesError, "Please write at least one activity before saving.");
+    firstInvalid = firstInvalid || entryNotes;
+  } else {
+    clearFieldError(entryNotes, entryNotesError);
+  }
+
+  return firstInvalid;
 }
 
 function seedSampleEntries() {
@@ -78,12 +102,13 @@ function render() {
 entryForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const notes = entryNotes.value.trim();
-  if (!notes) {
-    entryNotes.focus();
+  const firstInvalid = validateForm();
+  if (firstInvalid) {
+    firstInvalid.focus();
     return;
   }
 
+  const notes = entryNotes.value.trim();
   const entries = loadEntries();
   entries.unshift({
     id: crypto.randomUUID(),
@@ -95,6 +120,7 @@ entryForm.addEventListener("submit", (event) => {
   saveEntries(entries);
   entryNotes.value = "";
   entryMood.value = "okay";
+  clearFieldError(entryNotes, entryNotesError);
   render();
 });
 
@@ -102,6 +128,7 @@ clearFormButton.addEventListener("click", () => {
   entryDate.value = "";
   entryMood.value = "okay";
   entryNotes.value = "";
+  clearFieldError(entryNotes, entryNotesError);
   render();
 });
 
@@ -110,7 +137,12 @@ seedSampleButton.addEventListener("click", () => {
   render();
 });
 
-entryNotes.addEventListener("input", render);
+entryNotes.addEventListener("input", () => {
+  if (entryNotes.value.trim()) {
+    clearFieldError(entryNotes, entryNotesError);
+  }
+  render();
+});
 entryDate.value = new Date().toISOString().slice(0, 10);
 entryMood.value = "okay";
 render();

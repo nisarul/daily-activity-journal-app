@@ -161,6 +161,21 @@ button.secondary {
   background: #f8fafc;
 }
 
+.field-error {
+  color: #b91c1c;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.field-error:empty {
+  display: none;
+}
+
+[aria-invalid="true"] {
+  border-color: #b91c1c;
+  outline-color: #b91c1c;
+}
+
 @media (max-width: 820px) {
   .layout {
     grid-template-columns: 1fr;

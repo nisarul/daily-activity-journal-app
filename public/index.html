@@ -34,7 +34,8 @@
           </label>
           <label>
             Activities
-            <textarea id="entry-notes" rows="7" placeholder="Write what happened today..."></textarea>
+            <textarea id="entry-notes" rows="7" placeholder="Write what happened today..." aria-describedby="entry-notes-error"></textarea>
+            <span id="entry-notes-error" class="field-error" role="alert"></span>
           </label>
           <button type="submit">Save entry</button>
           <button id="clear-form" type="button" class="secondary">Clear form</button>
