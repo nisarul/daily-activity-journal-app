@@ -27,20 +27,17 @@ consistently. Use this instead of guessing the form's structure.
 
 - One error element per field, e.g. `#<field>-error`, with `role="alert"`.
 - Set `aria-invalid="true"` on the field and `aria-describedby` to the error id.
-- Style errors with the `.field-error` class. Do not use `alert()`.
+- Style errors with the `.field-error` class.
 - Clear a field's error on the next `input` event for that field.
 
-## Procedure
+## Procedure (app-specific steps only)
 
-1. Read `public/index.html` and `public/app.js` to confirm current field ids
-   and the existing validation function (if any).
-2. For each field in scope, add: the error element, the validate check, and
-   the clear-on-input handler — following the convention above.
-3. Move focus to the first invalid field on submit failure.
-4. Preserve defaults and existing entries. Flag any default/behavior change.
-5. Validate: `node --check public/app.js` + a server smoke test.
+Generic workflow, rules, and output format come from
+`.github/copilot-instructions.md`, `.github/prompts/safe-frontend-change.prompt.md`,
+and the agent. This skill only adds what is specific to this form:
 
-## Output
-
-Follow the repo prompt's required output sections. Note explicitly which
-fields you validated and which you intentionally left unchanged.
+1. Confirm the field ids above against `public/index.html` before editing.
+2. For each in-scope field, add the error element, the validate check, and the
+   clear-on-input handler using the convention above.
+3. On submit failure, move focus to the first invalid field.
+4. State explicitly which fields you validated and which you left unchanged.
