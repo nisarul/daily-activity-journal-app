@@ -17,27 +17,57 @@
       </section>
 
       <section class="layout">
-        <form id="entry-form" class="entry-panel">
-          <label>
-            Date
-            <input id="entry-date" type="date" />
-          </label>
-          <label>
-            Mood
-            <select id="entry-mood">
-              <option>tired</option>
-              <option>okay</option>
-              <option>focused</option>
-              <option>busy</option>
-              <option>grumpy</option>
+        <form id="entry-form" class="entry-panel" novalidate>
+          <div class="field">
+            <label for="entry-date">Date <span class="req" aria-hidden="true">*</span></label>
+            <input
+              id="entry-date"
+              name="date"
+              type="date"
+              required
+              aria-describedby="entry-date-error"
+            />
+            <p id="entry-date-error" class="field-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="entry-mood">Mood <span class="req" aria-hidden="true">*</span></label>
+            <select id="entry-mood" name="mood" required aria-describedby="entry-mood-error">
+              <option value="" disabled selected>Choose a mood…</option>
+              <option value="tired">tired</option>
+              <option value="okay">okay</option>
+              <option value="focused">focused</option>
+              <option value="busy">busy</option>
+              <option value="grumpy">grumpy</option>
             </select>
-          </label>
-          <label>
-            Activities
-            <textarea id="entry-notes" rows="7" placeholder="Write what happened today..."></textarea>
-          </label>
-          <button type="submit">Save entry</button>
-          <button id="clear-form" type="button" class="secondary">Clear form</button>
+            <p id="entry-mood-error" class="field-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="entry-notes">Activities <span class="req" aria-hidden="true">*</span></label>
+            <textarea
+              id="entry-notes"
+              name="notes"
+              rows="7"
+              required
+              minlength="3"
+              maxlength="2000"
+              placeholder="Write what happened today..."
+              aria-describedby="entry-notes-hint entry-notes-counter entry-notes-error"
+            ></textarea>
+            <div class="field-meta">
+              <span id="entry-notes-hint" class="field-hint">A few words about your day.</span>
+              <span id="entry-notes-counter" class="field-counter">0 / 2000</span>
+            </div>
+            <p id="entry-notes-error" class="field-error"></p>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit">Save entry</button>
+            <button id="clear-form" type="button" class="secondary">Clear form</button>
+          </div>
+
+          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
         </form>
 
         <aside class="stats-panel">
