@@ -22,6 +22,7 @@ are stored in the browser via `localStorage`.
 
 - When adding validation, show clear inline feedback near the relevant field.
 - Do not use `alert()` for validation messages.
+- Add basic accessibility (labels, `aria-*`, focus handling) where relevant.
 - Preserve existing defaults and existing entries unless explicitly told otherwise.
 
 ## Validation before done

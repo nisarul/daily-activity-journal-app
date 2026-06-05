@@ -19,8 +19,7 @@ ${input:task:Describe the change to make (e.g. "add validation to the entry form
 2. Plan: list the specific, in-scope changes you will make. If any change
    would alter existing behavior or default values, flag it and ask before
    proceeding.
-3. Implement: make minimal, focused edits in `public/` only. Vanilla
-   HTML/CSS/JS, no dependencies, no `server.js` changes.
+3. Implement: make minimal, focused edits scoped to the task.
 4. Validate: run `node --check public/app.js` and a quick server smoke test.
 
 ## Required output (always include these sections)
@@ -31,8 +30,6 @@ ${input:task:Describe the change to make (e.g. "add validation to the entry form
 - Validation result (commands run and outcomes)
 - Out-of-scope items deliberately skipped
 
-## Constraints
-
-- Keep defaults and existing data intact unless the task explicitly says otherwise.
-- Show inline user feedback near the relevant element; do not use `alert()`.
-- Add basic accessibility (labels, `aria-*`, focus handling) where relevant.
+> Repo-wide rules (vanilla stack, no dependencies, no `server.js` changes,
+> inline feedback, accessibility, preserve defaults) are defined in
+> `.github/copilot-instructions.md` and always apply.
