@@ -6,9 +6,9 @@ Use this file to track maturity-level progression for the daily activity journal
 
 | Level | Branch | Tag | Status | Notes |
 |---|---|---|---|---|
-| V0 | demo/v0 | v0-demo | Done | Bad baseline created and pushed |
-| V1 | demo/v1 | v1-demo | Not started | Add copilot instructions only |
-| V2 | demo/v2 | v2-demo | Not started | Add reusable prompt |
+| V0 | demo/v0 | v0-demo | Done | Bad baseline created and pushed; run captured on demo/v0-run (v0-run) |
+| V1 | demo/v1 | v1-demo | Done | Instructions layer added; run captured (v1-run) |
+| V2 | demo/v2 | v2-demo | Done | Reusable prompt layer added; run captured (v2-run) |
 | V3 | demo/v3 | v3-demo | Not started | Add focused agent |
 | V4 | demo/v4 | v4-demo | Not started | Add focused skill |
 | V5 | demo/v5 | v5-demo | Not started | Add minimal MCP stub |
