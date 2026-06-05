@@ -21,3 +21,9 @@ Open `http://localhost:3000`.
 - Plain, cluttered layout
 - Default controls and awkward styling
 - Working behavior first, polish later
+
+## Demo Tracking
+
+- Progress log: [DEMO_PROGRESS.md](DEMO_PROGRESS.md)
+- V0 prompt provenance: [V0_BAD_PROMPT.md](V0_BAD_PROMPT.md)
+- Shareable evidence docs: [shareable-evidence-pack/README.md](shareable-evidence-pack/README.md)
