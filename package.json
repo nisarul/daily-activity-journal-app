@@ -4,6 +4,7 @@
   "private": true,
   "description": "A deliberately rough daily activity journal website for the V0 demo baseline.",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "validate": "node scripts/validate.mjs"
   }
 }
