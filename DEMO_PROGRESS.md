@@ -11,8 +11,8 @@ Use this file to track maturity-level progression for the daily activity journal
 | V2 | demo/v2 | v2-demo | Done | Reusable prompt layer added; run captured (v2-run) |
 | V3 | demo/v3 | v3-demo | Done | Focused agent layer added; run captured (v3-run), self-review produced |
 | V4 | demo/v4 | v4-demo | Done | Focused skill layer added; run captured (v4-run), skill convention applied |
-| V5 | demo/v5 | v5-demo | Not started | Add minimal MCP stub |
-| V6 | demo/v6 | v6-demo | Not started | Add minimal hooks/validation |
+| V5 | demo/v5 | v5-demo | Layer built (not demoed) | MCP stub added + verified; no live run |
+| V6 | demo/v6 | v6-demo | Layer built (not demoed) | Hooks + validation gate added + verified; no live run |
 
 ## Prompt Provenance
 
