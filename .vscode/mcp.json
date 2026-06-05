@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "design-standards": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["mcp-server/design-standards-server.js"]
+    }
+  }
+}
