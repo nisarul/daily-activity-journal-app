@@ -1,23 +1,21 @@
 ---
 mode: agent
-description: Improve the journal entry form and add user-facing validation, with a consistent investigate-plan-validate workflow.
+description: Make a safe, scoped front-end change to this app using a consistent investigate-plan-implement-validate workflow.
 ---
 
-# Improve Journal Entry Form
+# Safe Front-End Change
 
-Use this prompt to improve the daily journal entry form and add validation.
-Follow the workflow and produce the required output sections every time.
+Use this prompt for ANY front-end change in this app (new feature, bug fix,
+UI tweak, validation, refactor). Supply the specific task when you invoke it.
 
 ## Task
 
-Make the journal entry form better and add validation so users get clear
-feedback when something is wrong.
+${input:task:Describe the change to make (e.g. "add validation to the entry form")}
 
 ## Workflow (do in order)
 
-1. Investigate: read `public/index.html`, `public/app.js`, and
-   `public/styles.css` before editing. Identify the current fields, defaults,
-   and existing behavior.
+1. Investigate: read the relevant files under `public/` before editing.
+   Identify current structure, defaults, and existing behavior.
 2. Plan: list the specific, in-scope changes you will make. If any change
    would alter existing behavior or default values, flag it and ask before
    proceeding.
@@ -35,6 +33,6 @@ feedback when something is wrong.
 
 ## Constraints
 
-- Keep defaults and existing entries intact unless explicitly told otherwise.
-- Show inline validation feedback near the field; do not use `alert()`.
+- Keep defaults and existing data intact unless the task explicitly says otherwise.
+- Show inline user feedback near the relevant element; do not use `alert()`.
 - Add basic accessibility (labels, `aria-*`, focus handling) where relevant.
