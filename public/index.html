@@ -17,7 +17,7 @@
       </section>
 
       <section class="layout">
-        <form id="entry-form" class="entry-panel">
+        <form id="entry-form" class="entry-panel" novalidate>
           <label>
             Date
             <input id="entry-date" type="date" />
@@ -33,11 +33,20 @@
             </select>
           </label>
           <label>
-            Activities
-            <textarea id="entry-notes" rows="7" placeholder="Write what happened today..."></textarea>
+            <span class="field-label">Activities <span class="required" aria-hidden="true">*</span></span>
+            <textarea
+              id="entry-notes"
+              rows="7"
+              placeholder="Write what happened today..."
+              required
+              aria-required="true"
+              aria-describedby="notes-error"
+            ></textarea>
           </label>
+          <p id="notes-error" class="field-error" role="alert"></p>
           <button type="submit">Save entry</button>
           <button id="clear-form" type="button" class="secondary">Clear form</button>
+          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
         </form>
 
         <aside class="stats-panel">

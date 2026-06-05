@@ -94,6 +94,43 @@ button.secondary {
   background: #bfdbfe;
 }
 
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  outline: 3px solid #1d4ed8;
+  outline-offset: 2px;
+}
+
+.required {
+  color: #b91c1c;
+}
+
+[aria-invalid="true"] {
+  border-color: #b91c1c;
+  box-shadow: 0 0 0 1px #b91c1c;
+}
+
+.field-error,
+.form-status {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.field-error {
+  color: #b91c1c;
+}
+
+.form-status {
+  color: #166534;
+}
+
+.field-error:empty,
+.form-status:empty {
+  display: none;
+}
+
 .stats-panel {
   display: grid;
   gap: 12px;
