@@ -2,9 +2,9 @@
 
 | Level | Branch | Tag | Status | Summary |
 |---|---|---|---|---|
-| V0 | demo/v0 | v0-demo | Complete | Bad baseline established and published |
-| V1 | demo/v1 | v1-demo | Not Started | Instructions layer |
-| V2 | demo/v2 | v2-demo | Not Started | Reusable prompt layer |
+| V0 | demo/v0 | v0-demo | Complete | Bad baseline established; V0 prompt output captured on demo/v0-run (tag v0-run) |
+| V1 | demo/v1 | v1-demo | Complete | Instructions layer (commit 8d148d2); prompt output captured on demo/v1 (tag v1-run) |
+| V2 | demo/v2 | v2-demo | Complete | Reusable prompt layer (safe-frontend-change); output captured on demo/v2 (tag v2-run) |
 | V3 | demo/v3 | v3-demo | Not Started | Focused agent layer |
 | V4 | demo/v4 | v4-demo | Not Started | Focused skill layer |
 | V5 | demo/v5 | v5-demo | Not Started | Minimal MCP layer |
