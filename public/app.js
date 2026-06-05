@@ -9,6 +9,8 @@ const entryCount = document.getElementById("entry-count");
 const wordCount = document.getElementById("word-count");
 const lastMood = document.getElementById("last-mood");
 const lastDate = document.getElementById("last-date");
+const entryNotesError = document.getElementById("entry-notes-error");
+const formStatus = document.getElementById("form-status");
 
 const storageKey = "daily-activity-journal-entries";
 
@@ -75,11 +77,33 @@ function render() {
     .join("");
 }
 
+function setNotesError(message) {
+  entryNotesError.textContent = message;
+  if (message) {
+    entryNotes.setAttribute("aria-invalid", "true");
+  } else {
+    entryNotes.removeAttribute("aria-invalid");
+  }
+}
+
+let statusTimer;
+function showStatus(message) {
+  formStatus.textContent = message;
+  clearTimeout(statusTimer);
+  if (message) {
+    statusTimer = setTimeout(() => {
+      formStatus.textContent = "";
+    }, 4000);
+  }
+}
+
 entryForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const notes = entryNotes.value.trim();
   if (!notes) {
+    setNotesError("Please write a few words about your day before saving.");
+    showStatus("");
     entryNotes.focus();
     return;
   }
@@ -93,8 +117,10 @@ entryForm.addEventListener("submit", (event) => {
   });
 
   saveEntries(entries);
+  setNotesError("");
   entryNotes.value = "";
   entryMood.value = "okay";
+  showStatus("Entry saved.");
   render();
 });
 
@@ -102,6 +128,8 @@ clearFormButton.addEventListener("click", () => {
   entryDate.value = "";
   entryMood.value = "okay";
   entryNotes.value = "";
+  setNotesError("");
+  showStatus("");
   render();
 });
 
@@ -110,7 +138,12 @@ seedSampleButton.addEventListener("click", () => {
   render();
 });
 
-entryNotes.addEventListener("input", render);
+entryNotes.addEventListener("input", () => {
+  if (entryNotes.value.trim()) {
+    setNotesError("");
+  }
+  render();
+});
 entryDate.value = new Date().toISOString().slice(0, 10);
 entryMood.value = "okay";
 render();

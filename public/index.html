@@ -32,12 +32,20 @@
               <option>grumpy</option>
             </select>
           </label>
-          <label>
-            Activities
-            <textarea id="entry-notes" rows="7" placeholder="Write what happened today..."></textarea>
-          </label>
+          <div class="field">
+            <label for="entry-notes">Activities <span class="required-mark" aria-hidden="true">*</span></label>
+            <textarea
+              id="entry-notes"
+              rows="7"
+              placeholder="Write what happened today..."
+              aria-required="true"
+              aria-describedby="entry-notes-error"
+            ></textarea>
+            <p id="entry-notes-error" class="field-error" role="alert"></p>
+          </div>
           <button type="submit">Save entry</button>
           <button id="clear-form" type="button" class="secondary">Clear form</button>
+          <p id="form-status" class="form-status" role="status"></p>
         </form>
 
         <aside class="stats-panel">
